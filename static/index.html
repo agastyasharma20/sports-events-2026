@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Events 2026 — PIEMR Indore</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a56db;--blue-dark:#1547c0;--blue-light:#eff6ff;--blue-mid:#3b82f6;
+  --text:#0f172a;--text-sec:#475569;--text-muted:#94a3b8;
+  --bg:#f1f5f9;--surface:#ffffff;--border:#e2e8f0;
+  --red:#dc2626;--green:#16a34a;--amber:#d97706;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.14);
+  --r:10px;--r-lg:16px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ── PAGE LOADER ── */
+#loader{position:fixed;inset:0;background:#07111f;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .5s,visibility .5s}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;letter-spacing:4px;animation:loaderPulse 1.2s ease-in-out infinite}
+.loader-bar{width:160px;height:3px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.loader-fill{height:100%;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:3px;animation:loaderBar 1.4s ease-in-out forwards}
+@keyframes loaderPulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes loaderBar{0%{width:0%}100%{width:100%}}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger-1{transition-delay:.05s}
+.stagger-2{transition-delay:.1s}
+.stagger-3{transition-delay:.15s}
+.stagger-4{transition-delay:.2s}
+.stagger-5{transition-delay:.25s}
+.stagger-6{transition-delay:.3s}
+.stagger-7{transition-delay:.35s}
+.stagger-8{transition-delay:.4s}
+.stagger-9{transition-delay:.45s}
+.stagger-10{transition-delay:.5s}
+
+/* ── TOAST ── */
+#toast-container{position:fixed;top:76px;right:16px;z-index:9998;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.toast{background:var(--surface);border-radius:12px;padding:14px 18px;font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);border-left:4px solid var(--blue);min-width:260px;max-width:340px;pointer-events:all;animation:toastIn .35s cubic-bezier(.22,1,.36,1);transition:opacity .3s,transform .3s}
+.toast.success{border-color:var(--green);color:var(--green)}
+.toast.error{border-color:var(--red);color:var(--red)}
+.toast.info{border-color:var(--blue);color:var(--blue)}
+.toast.fade{opacity:0;transform:translateX(20px)}
+@keyframes toastIn{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* ── NAVBAR ── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 20px;gap:16px;transition:height .3s,box-shadow .3s}
+.navbar.scrolled{height:56px;box-shadow:var(--shadow-lg)}
+.navbar-brand{display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none;flex-shrink:0}
+.nav-logo{width:38px;height:38px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.5px;flex-shrink:0;transition:transform .2s}
+.navbar-brand:hover .nav-logo{transform:rotate(-6deg) scale(1.08)}
+.nav-brand-text span:first-child{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;color:var(--text);line-height:1.2;display:block;transition:color .2s}
+.nav-brand-text span:last-child{font-size:11px;color:var(--text-sec);display:block}
+.navbar-links{display:flex;align-items:center;gap:2px;margin-left:auto}
+.nav-link{padding:7px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-sec);cursor:pointer;border:none;background:none;font-family:'Barlow',sans-serif;transition:all .2s;white-space:nowrap;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:2px;left:50%;right:50%;height:2px;background:var(--blue);border-radius:2px;transition:left .2s,right .2s}
+.nav-link:hover{color:var(--blue)}
+.nav-link:hover::after,.nav-link.active::after{left:12px;right:12px}
+.nav-link.active{color:var(--blue)}
+.nav-cta{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Barlow',sans-serif;transition:all .2s;white-space:nowrap;position:relative;overflow:hidden}
+.nav-cta::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%);transition:transform .3s}
+.nav-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 14px rgba(26,86,219,.4)}
+.nav-cta:hover::before{transform:translateX(0)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1px solid var(--border);border-radius:8px;cursor:pointer;padding:8px;margin-left:auto;flex-shrink:0;transition:border-color .2s}
+.hamburger:hover{border-color:var(--blue)}
+.hamburger span{display:block;height:2px;background:var(--text);border-radius:2px;transition:all .3s cubic-bezier(.22,1,.36,1)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--border);z-index:199;padding:12px 16px 20px;box-shadow:var(--shadow-lg);animation:slideDown .25s cubic-bezier(.22,1,.36,1)}
+@keyframes slideDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+.mobile-menu.open{display:block}
+.mobile-menu .nav-link{display:block;width:100%;text-align:left;padding:13px 14px;font-size:15px;border-radius:10px;margin-bottom:4px}
+.mobile-menu .nav-link:hover{background:var(--blue-light)}
+.mobile-menu .nav-cta{display:block;width:100%;text-align:center;padding:14px;font-size:15px;border-radius:10px;margin-top:8px}
+
+/* ── PAGE TRANSITIONS ── */
+.page{display:none;padding-top:64px;min-height:100vh}
+.page.active{display:block;animation:pageIn .4s cubic-bezier(.22,1,.36,1)}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── HERO ── */
+.hero{position:relative;background:#07111f;overflow:hidden;padding:clamp(60px,9vw,110px) 20px clamp(60px,9vw,90px)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 140% 80% at 65% 50%,rgba(26,86,219,.45) 0%,transparent 65%),radial-gradient(ellipse 60% 80% at -10% 80%,rgba(59,130,246,.2) 0%,transparent 55%);pointer-events:none}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;animation:dotsDrift 20s linear infinite}
+@keyframes dotsDrift{0%{background-position:0 0}100%{background-position:28px 28px}}
+/* Floating orbs */
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(60px)}
+.hero-orb-1{width:300px;height:300px;background:rgba(26,86,219,.25);top:-80px;right:10%;animation:orbFloat1 8s ease-in-out infinite}
+.hero-orb-2{width:200px;height:200px;background:rgba(245,158,11,.15);bottom:10%;left:5%;animation:orbFloat2 10s ease-in-out infinite}
+.hero-orb-3{width:150px;height:150px;background:rgba(96,165,250,.2);top:40%;right:25%;animation:orbFloat3 7s ease-in-out infinite}
+@keyframes orbFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
+@keyframes orbFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-25px)}}
+@keyframes orbFloat3{0%,100%{transform:translate(0,0)}50%{transform:translate(15px,15px)}}
+.hero-inner{position:relative;max-width:860px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(26,86,219,.2);border:1px solid rgba(59,130,246,.4);border-radius:999px;padding:6px 18px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:#93c5fd;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;animation:heroFadeUp .8s .2s both cubic-bezier(.22,1,.36,1)}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#3b82f6;animation:blink 1.8s infinite}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(59,130,246,.5)}50%{opacity:.5;box-shadow:0 0 0 6px rgba(59,130,246,0)}}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(58px,13vw,116px);color:#fff;line-height:.88;letter-spacing:2px;margin-bottom:8px;animation:heroFadeUp .8s .35s both cubic-bezier(.22,1,.36,1)}
+.hero h1 em{color:#f59e0b;font-style:normal;display:inline-block;animation:shimmer 3s ease-in-out infinite}
+@keyframes shimmer{0%,100%{text-shadow:0 0 40px rgba(245,158,11,0)}50%{text-shadow:0 0 40px rgba(245,158,11,.5)}}
+.hero-sub{font-family:'Barlow Condensed',sans-serif;font-size:clamp(17px,3vw,24px);font-weight:600;color:#60a5fa;margin-bottom:18px;letter-spacing:.5px;animation:heroFadeUp .8s .5s both cubic-bezier(.22,1,.36,1)}
+.hero-desc{font-size:clamp(14px,2vw,16px);color:#94a3b8;max-width:520px;margin:0 auto 36px;line-height:1.8;animation:heroFadeUp .8s .6s both cubic-bezier(.22,1,.36,1)}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:heroFadeUp .8s .7s both cubic-bezier(.22,1,.36,1)}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.btn-primary{padding:14px 32px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Barlow',sans-serif;transition:all .25s;letter-spacing:.2px;position:relative;overflow:hidden}
+.btn-primary::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);transform:translateX(-100%) skewX(-15deg);transition:transform .4s}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-3px);box-shadow:0 12px 28px rgba(26,86,219,.4)}
+.btn-primary:hover::after{transform:translateX(120%) skewX(-15deg)}
+.btn-primary:active{transform:translateY(-1px)}
+.btn-ghost{padding:14px 32px;background:transparent;color:#e2e8f0;border:1.5px solid rgba(255,255,255,.2);border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Barlow',sans-serif;transition:all .25s}
+.btn-ghost:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.08);transform:translateY(-3px)}
+.hero-stats{display:flex;flex-wrap:wrap;gap:clamp(20px,5vw,56px);justify-content:center;margin-top:clamp(40px,7vw,64px);padding-top:clamp(32px,5vw,52px);border-top:1px solid rgba(255,255,255,.1);animation:heroFadeUp .8s .9s both cubic-bezier(.22,1,.36,1)}
+.hstat{text-align:center;cursor:default}
+.hstat .n{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,48px);color:#f59e0b;line-height:1;transition:transform .2s}
+.hstat:hover .n{transform:scale(1.1)}
+.hstat .l{font-size:12px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+
+/* ── SECTION ── */
+.wrap{max-width:980px;margin:0 auto;padding:clamp(48px,6vw,80px) 20px}
+.stag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.stag::before{content:'';width:20px;height:2px;background:var(--blue);border-radius:2px}
+.stitle{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,5vw,50px);color:var(--text);line-height:1;margin-bottom:12px}
+.sdesc{font-size:15px;color:var(--text-sec);max-width:500px;line-height:1.75}
+
+/* ── SPORTS GRID ── */
+.sports-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;margin-top:36px}
+.sport-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:22px 12px 18px;text-align:center;transition:all .3s cubic-bezier(.22,1,.36,1);cursor:default;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.sport-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--blue-light),transparent);opacity:0;transition:opacity .3s}
+.sport-card:hover{border-color:var(--blue);transform:translateY(-6px) scale(1.02);box-shadow:0 16px 40px rgba(26,86,219,.16)}
+.sport-card:hover::before{opacity:1}
+.sport-card:active{transform:translateY(-3px) scale(1.01)}
+.s-icon{font-size:32px;margin-bottom:10px;display:block;transition:transform .3s}
+.sport-card:hover .s-icon{transform:scale(1.2) rotate(-5deg)}
+.s-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;color:var(--text);line-height:1.2;position:relative}
+.s-type{font-size:11px;color:var(--text-muted);margin-top:4px;background:var(--bg);border-radius:999px;display:inline-block;padding:2px 10px;position:relative}
+
+/* ── COORDINATOR CARDS ── */
+.coord-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:36px}
+.coord-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:20px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow);transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
+.coord-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);transform:scaleY(0);transform-origin:bottom;transition:transform .3s}
+.coord-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,86,219,.12);border-color:rgba(26,86,219,.25)}
+.coord-card:hover::after{transform:scaleY(1)}
+.av{width:48px;height:48px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;color:var(--blue);flex-shrink:0;transition:transform .3s}
+.coord-card:hover .av{transform:scale(1.1) rotate(5deg)}
+.av.amber{background:#fef3c7;color:#92400e}
+.coord-name{font-weight:600;font-size:14px;color:var(--text);line-height:1.3}
+.coord-role{font-size:12px;color:var(--text-muted);margin-top:2px}
+
+/* ── CTA BAND ── */
+.cta-band{background:linear-gradient(135deg,var(--blue) 0%,#0c3db5 100%);padding:clamp(48px,6vw,72px) 20px;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.cta-band::after{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:rgba(255,255,255,.05);border-radius:50%;pointer-events:none}
+.cta-band h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,5vw,52px);color:#fff;letter-spacing:2px;margin-bottom:12px;position:relative}
+.cta-band p{color:rgba(255,255,255,.8);font-size:15px;margin-bottom:32px;position:relative}
+.btn-white{padding:14px 36px;background:#fff;color:var(--blue);border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Barlow',sans-serif;transition:all .25s;position:relative}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.25)}
+.btn-white:active{transform:translateY(-1px)}
+
+/* ── PAGE HEADERS ── */
+.page-hero{background:linear-gradient(135deg,#07111f 0%,#1a3a6e 100%);padding:clamp(48px,7vw,72px) 20px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,7vw,64px);letter-spacing:2px;position:relative;animation:heroFadeUp .6s .1s both cubic-bezier(.22,1,.36,1)}
+.page-hero p{font-size:14px;opacity:.8;margin-top:10px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75;position:relative;animation:heroFadeUp .6s .2s both cubic-bezier(.22,1,.36,1)}
+
+/* ── REGISTER FORM ── */
+.form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(22px,4vw,40px);box-shadow:var(--shadow-lg)}
+.form-card h2{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;letter-spacing:.3px}
+.form-card .form-note{font-size:13px;color:var(--text-sec);margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--border);line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{margin-bottom:20px}
+.form-group label{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-sec);margin-bottom:7px;transition:color .2s}
+.form-group:focus-within label{color:var(--blue)}
+.req{color:var(--red)}
+.field-hint{font-size:11px;font-weight:400;color:var(--text-muted)}
+.input-wrap{position:relative}
+.input-wrap input,.input-wrap select{padding-right:36px}
+.field-icon{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;transition:all .2s}
+input,select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:9px;background:var(--surface);color:var(--text);font-size:14px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s,background .2s;-webkit-appearance:none;appearance:none}
+input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(26,86,219,.1);background:#fafcff}
+input.valid{border-color:#16a34a}
+input.invalid{border-color:var(--red)}
+input.valid:focus{box-shadow:0 0 0 4px rgba(22,163,74,.1)}
+input.invalid:focus{box-shadow:0 0 0 4px rgba(220,38,38,.1)}
+.field-msg{font-size:12px;margin-top:5px;display:none;transition:all .2s}
+.field-msg.show{display:block}
+.field-msg.ok{color:var(--green)}
+.field-msg.err{color:var(--red)}
+.enrol-status{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:13px;margin-top:8px;display:none;line-height:1.5;transition:all .2s}
+.enrol-status.show{display:block;animation:statusIn .3s cubic-bezier(.22,1,.36,1)}
+@keyframes statusIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.enrol-status.ok{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.enrol-status.warn{background:#fff7ed;border-color:#fed7aa;color:#9a3412}
+.enrol-status.err{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+
+/* SIZE SELECTOR */
+.size-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.sz{min-width:44px;height:42px;padding:0 10px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;color:var(--text);transition:all .2s cubic-bezier(.22,1,.36,1);font-family:'Barlow Condensed',sans-serif;background:var(--surface);user-select:none;position:relative;overflow:hidden}
+.sz::before{content:'';position:absolute;inset:0;background:var(--blue);transform:scale(0);border-radius:50%;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.sz:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.sz.sel{background:var(--blue);color:#fff;border-color:var(--blue);transform:scale(1.05)}
+.sz.sel::before{transform:scale(2.5)}
+
+/* PROGRESS */
+.reg-progress{display:flex;align-items:center;gap:10px;margin-bottom:24px;padding:13px 16px;background:var(--bg);border-radius:10px;font-size:13px;border:1px solid var(--border);animation:statusIn .3s cubic-bezier(.22,1,.36,1)}
+.progress-bar{flex:1;height:7px;background:var(--border);border-radius:999px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:999px;transition:width .5s cubic-bezier(.22,1,.36,1)}
+.progress-text{font-weight:600;color:var(--text-sec);white-space:nowrap;font-size:12px}
+
+/* SUBMIT */
+.submit-btn{width:100%;padding:14px;font-size:15px;font-weight:700;background:linear-gradient(135deg,var(--blue),#2563eb);color:#fff;border:none;border-radius:10px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;transition:all .25s;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden}
+.submit-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);transform:translateX(-100%);transition:transform .4s}
+.submit-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,86,219,.4)}
+.submit-btn:hover:not(:disabled)::before{transform:translateX(0)}
+.submit-btn:active:not(:disabled){transform:translateY(0)}
+.submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-msg{padding:14px 18px;border-radius:10px;font-size:14px;margin-top:16px;display:none;line-height:1.65;animation:statusIn .3s cubic-bezier(.22,1,.36,1)}
+.form-msg.error{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;display:block}
+.form-msg.success{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;display:block;text-align:center}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:52px}
+.about-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;box-shadow:var(--shadow);transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#60a5fa);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.about-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.1)}
+.about-card:hover::before{transform:scaleX(1)}
+.about-card h3{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.aico{width:32px;height:32px;background:var(--blue-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:transform .3s}
+.about-card:hover .aico{transform:rotate(-8deg) scale(1.1)}
+.about-card p{font-size:14px;color:var(--text-sec);line-height:1.85}
+.rules-list{list-style:none}
+.rules-list li{font-size:14px;color:var(--text-sec);padding:12px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.65;transition:color .2s}
+.rules-list li:last-child{border-bottom:none}
+.rules-list li:hover{color:var(--text)}
+.rules-list li::before{content:'✓';color:var(--blue);font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
+.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;box-shadow:var(--shadow);transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
+.contact-card::after{content:'';position:absolute;inset:0;background:var(--blue-light);opacity:0;transition:opacity .3s}
+.contact-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,86,219,.12);border-color:rgba(26,86,219,.2)}
+.contact-card:hover::after{opacity:.4}
+.contact-card>*{position:relative;z-index:1}
+.c-icon{font-size:26px;margin-bottom:12px;display:block;transition:transform .3s}
+.contact-card:hover .c-icon{transform:scale(1.2)}
+.contact-card h4{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:7px}
+.contact-card p{font-size:13px;color:var(--text-sec);line-height:1.75}
+.contact-card a{color:var(--blue);text-decoration:none;transition:opacity .2s}
+.contact-card a:hover{opacity:.7;text-decoration:underline}
+
+/* ── ADMIN ── */
+.admin-login-wrap{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;padding:32px 20px;background:var(--bg)}
+.admin-login-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(28px,4vw,44px);width:100%;max-width:400px;box-shadow:var(--shadow-lg);animation:pageIn .4s cubic-bezier(.22,1,.36,1)}
+.admin-login-card h2{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:1px;margin-bottom:6px}
+.admin-login-card .sub{font-size:14px;color:var(--text-sec);margin-bottom:28px;line-height:1.6}
+.admin-body{max-width:1100px;margin:0 auto;padding:clamp(24px,4vw,44px) 20px}
+.admin-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;gap:14px;flex-wrap:wrap}
+.admin-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,36px);letter-spacing:1px;line-height:1}
+.admin-sub{font-size:13px;color:var(--text-sec);margin-top:4px}
+.admin-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-outline{padding:9px 18px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Barlow',sans-serif;transition:all .2s}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light);transform:translateY(-1px)}
+.btn-danger{padding:9px 18px;border:1.5px solid #fecaca;background:#fef2f2;color:var(--red);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Barlow',sans-serif;transition:all .2s}
+.btn-danger:hover{background:#fee2e2;transform:translateY(-1px)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:24px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;box-shadow:var(--shadow);transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#60a5fa);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(26,86,219,.1)}
+.stat-card:hover::before{transform:scaleX(1)}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--blue);line-height:1}
+.stat-l{font-size:11px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+.table-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.table-top{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
+.table-top h3{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700}
+.filter-row{display:flex;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap;background:#fafafa}
+.filter-row input,.filter-row select{width:auto;flex:1;min-width:140px;padding:8px 12px;font-size:13px;border-radius:8px}
+table{width:100%;border-collapse:collapse}
+th{padding:10px 14px;text-align:left;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--text-sec);background:#f8fafc;border-bottom:1px solid var(--border)}
+td{padding:11px 14px;border-bottom:1px solid var(--border);font-size:13px;color:var(--text);vertical-align:middle;transition:background .15s}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--blue-light)}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:.3px;white-space:nowrap}
+.badge-blue{background:var(--blue-light);color:var(--blue)}
+.badge-green{background:#f0fdf4;color:#166534}
+.del-btn{background:none;border:none;color:#f87171;cursor:pointer;font-size:12px;padding:5px 8px;border-radius:6px;font-family:'Barlow',sans-serif;white-space:nowrap;transition:all .2s}
+.del-btn:hover{background:#fef2f2;color:var(--red);transform:scale(1.05)}
+.empty-state{text-align:center;padding:60px 20px;color:var(--text-muted)}
+.empty-icon{font-size:44px;margin-bottom:14px;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.chart-bar{height:7px;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:999px;min-width:4px;transition:width .7s cubic-bezier(.22,1,.36,1)}
+
+/* ── FOOTER ── */
+footer{background:#07111f;color:#64748b;padding:clamp(40px,5vw,60px) 20px clamp(24px,3vw,36px)}
+.footer-inner{max-width:980px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(24px,4vw,52px);padding-bottom:clamp(28px,4vw,44px);border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand h3{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#e2e8f0;letter-spacing:1px;margin-bottom:12px}
+.footer-brand p{font-size:13px;line-height:1.75;max-width:270px}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;margin-bottom:14px}
+.footer-col ul{list-style:none}
+.footer-col ul li{font-size:13px;margin-bottom:10px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:0}
+.footer-col ul li::before{content:'›';opacity:0;margin-right:0;transition:all .2s;color:var(--blue-mid)}
+.footer-col ul li:hover{color:#e2e8f0;padding-left:4px}
+.footer-col ul li:hover::before{opacity:1;margin-right:4px}
+.footer-col ul li a{color:inherit;text-decoration:none}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:clamp(20px,3vw,28px);flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px}
+.footer-credit{font-size:13px;color:#475569}
+.credit-name{color:#60a5fa;font-weight:700;font-size:14px;position:relative;display:inline-block}
+.credit-name::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:#60a5fa;transform:scaleX(0);transition:transform .3s}
+.credit-name:hover::after{transform:scaleX(1)}
+.credit-links{display:inline-flex;align-items:center;gap:8px;margin-left:8px}
+.credit-link{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;border:1px solid transparent}
+.credit-link.linkedin{color:#0a66c2;border-color:rgba(10,102,194,.3);background:rgba(10,102,194,.08)}
+.credit-link.linkedin:hover{background:rgba(10,102,194,.18);border-color:rgba(10,102,194,.5);transform:translateY(-1px)}
+.credit-link.mail{color:#16a34a;border-color:rgba(22,163,74,.3);background:rgba(22,163,74,.08)}
+.credit-link.mail:hover{background:rgba(22,163,74,.18);border-color:rgba(22,163,74,.5);transform:translateY(-1px)}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+
+/* ── SCROLL TO TOP ── */
+#scroll-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--blue);color:#fff;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 16px rgba(26,86,219,.4);opacity:0;transform:translateY(16px);transition:all .3s cubic-bezier(.22,1,.36,1);z-index:300}
+#scroll-top.visible{opacity:1;transform:translateY(0)}
+#scroll-top:hover{background:var(--blue-dark);transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,86,219,.5)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .navbar-links{display:none}
+  .hamburger{display:flex}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-stats{gap:20px}
+  .sports-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  .table-scroll{overflow-x:auto}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  th,td{padding:9px 10px;font-size:12px}
+  .admin-top{flex-direction:column}
+  .admin-actions{width:100%}
+  .admin-actions button{flex:1}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-ghost{width:100%;max-width:300px}
+  .coord-grid{grid-template-columns:1fr}
+  .sports-grid{grid-template-columns:repeat(3,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .credit-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">PIEMR</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<div id="toast-container"></div>
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-brand" onclick="showPage('home')">
+    <div class="nav-logo">PIEMR</div>
+    <div class="nav-brand-text">
+      <span>Sports Events 2026</span>
+      <span>Prestige Institute · Indore</span>
+    </div>
+  </div>
+  <div class="navbar-links">
+    <button class="nav-link active" onclick="showPage('home')" data-nav="home">Home</button>
+    <button class="nav-link" onclick="showPage('about')" data-nav="about">About</button>
+    <button class="nav-link" onclick="showPage('contact')" data-nav="contact">Contact</button>
+    <button class="nav-link" onclick="showPage('adminLogin')" data-nav="adminLogin">Admin</button>
+    <button class="nav-cta" onclick="showPage('register')">Register Now</button>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="nav-link" onclick="showPage('home');closeMenu()">🏠 Home</button>
+  <button class="nav-link" onclick="showPage('about');closeMenu()">ℹ️ About</button>
+  <button class="nav-link" onclick="showPage('contact');closeMenu()">📞 Contact</button>
+  <button class="nav-link" onclick="showPage('adminLogin');closeMenu()">🔐 Admin</button>
+  <button class="nav-cta" onclick="showPage('register');closeMenu()">Register Now →</button>
+</div>
+
+<!-- ══════════════ HOME ══════════════ -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-dots"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-inner">
+      <div class="hero-badge"><span class="badge-dot"></span>Registrations Open Now</div>
+      <h1>Annual<br><em>Sports</em><br>Events</h1>
+      <div class="hero-sub">23 March 2026 – 29 March 2026</div>
+      <p class="hero-desc">Prestige Institute of Engineering Management and Research, Indore. Compete, connect, and champion — 10 sports, 7 days, one campus.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('register')">Register Now →</button>
+        <button class="btn-ghost" onclick="showPage('about')">Learn More</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="n" data-count="10">0</div><div class="l">Sports</div></div>
+        <div class="hstat"><div class="n" data-count="7">0</div><div class="l">Days</div></div>
+        <div class="hstat"><div class="n" data-count="2">0</div><div class="l">Max Sports/Student</div></div>
+        <div class="hstat"><div class="n">∞</div><div class="l">Glory</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="stag reveal">What's On</div>
+    <div class="stitle reveal">10 SPORTS EVENTS</div>
+    <p class="sdesc reveal">From court to field — pick your arena and represent your branch.</p>
+    <div class="sports-grid">
+      <div class="sport-card reveal stagger-1"><span class="s-icon">🏀</span><div class="s-name">Basketball</div><div class="s-type">Team</div></div>
+      <div class="sport-card reveal stagger-2"><span class="s-icon">⚽</span><div class="s-name">Football</div><div class="s-type">Team</div></div>
+      <div class="sport-card reveal stagger-3"><span class="s-icon">🏐</span><div class="s-name">Volleyball</div><div class="s-type">Team</div></div>
+      <div class="sport-card reveal stagger-4"><span class="s-icon">🏏</span><div class="s-name">Cricket</div><div class="s-type">Team</div></div>
+      <div class="sport-card reveal stagger-5"><span class="s-icon">🤼</span><div class="s-name">Kabaddi</div><div class="s-type">Team</div></div>
+      <div class="sport-card reveal stagger-6"><span class="s-icon">🏃</span><div class="s-name">Kho-Kho</div><div class="s-type">Team</div></div>
+      <div class="sport-card reveal stagger-7"><span class="s-icon">🏸</span><div class="s-name">Badminton</div><div class="s-type">Individual</div></div>
+      <div class="sport-card reveal stagger-8"><span class="s-icon">🏓</span><div class="s-name">Table Tennis</div><div class="s-type">Individual</div></div>
+      <div class="sport-card reveal stagger-9"><span class="s-icon">♟️</span><div class="s-name">Chess</div><div class="s-type">Individual</div></div>
+      <div class="sport-card reveal stagger-10"><span class="s-icon">🎯</span><div class="s-name">Carrom</div><div class="s-type">Individual</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="wrap">
+    <div class="stag reveal">Meet the Team</div>
+    <div class="stitle reveal">COORDINATORS</div>
+    <p class="sdesc reveal">The dedicated team behind Sports Events 2026.</p>
+    <div class="coord-grid">
+      <div class="coord-card reveal stagger-1"><div class="av">VH</div><div><div class="coord-name">Mr. Vikram Hansari</div><div class="coord-role">Sports Officer</div></div></div>
+      <div class="coord-card reveal stagger-2"><div class="av">DB</div><div><div class="coord-name">Mr. Dharmesh Barodiya</div><div class="coord-role">Faculty Coordinator</div></div></div>
+      <div class="coord-card reveal stagger-3"><div class="av">AC</div><div><div class="coord-name">Mr. Abhishek Chourasiya</div><div class="coord-role">Faculty Coordinator</div></div></div>
+      <div class="coord-card reveal stagger-4"><div class="av amber">MC</div><div><div class="coord-name">Ms. Meenu Chouhan</div><div class="coord-role">Student Coordinator</div></div></div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h2 class="reveal">READY TO COMPETE?</h2>
+    <p class="reveal">Registrations close soon. Each student can register for up to 2 sports.</p>
+    <button class="btn-white reveal" onclick="showPage('register')">Register Now →</button>
+  </div>
+</div>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <h1>ABOUT THE EVENT</h1>
+    <p>Annual Sports Events 2026 — a celebration of athleticism, teamwork, and the fighting spirit of PIEMR.</p>
+  </div>
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-card reveal stagger-1">
+        <h3><div class="aico">🏟️</div> About the Event</h3>
+        <p>Annual Sports Events 2026 is organised by the Sports Department of Prestige Institute of Engineering Management and Research, Indore. Running 23–29 March 2026, the event brings together students across all branches to compete in 10 diverse sports.</p>
+      </div>
+      <div class="about-card reveal stagger-2">
+        <h3><div class="aico">🎯</div> Objective</h3>
+        <p>To foster sportsmanship, teamwork, and physical fitness among students. A platform to showcase athletic talent, build camaraderie across branches, and enjoy a competitive yet friendly break from academics.</p>
+      </div>
+      <div class="about-card reveal stagger-3">
+        <h3><div class="aico">📋</div> Eligibility</h3>
+        <p>All currently enrolled PIEMR students from 1st to 4th year across all branches. Each student may register for up to <strong>2 sport events</strong>. Registration is free of cost.</p>
+      </div>
+      <div class="about-card reveal stagger-4">
+        <h3><div class="aico">🏆</div> Prizes</h3>
+        <p>Winners and runners-up of each event will receive trophies and certificates. The best performer overall will be honoured with the <em>Champion of Champions</em> title at the closing ceremony.</p>
+      </div>
+    </div>
+    <div class="stag reveal" style="margin-bottom:10px">Rules & Guidelines</div>
+    <div class="stitle reveal" style="margin-bottom:20px">PARTICIPATION RULES</div>
+    <div class="reveal" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(18px,3vw,30px);box-shadow:var(--shadow)">
+      <ul class="rules-list">
+        <li>Carry your College ID card at all times during the event.</li>
+        <li>Each student can register for a maximum of <strong>2 sports events</strong>.</li>
+        <li>Participants must report to the venue 15 minutes before scheduled time.</li>
+        <li>Unsportsmanlike conduct will lead to immediate disqualification.</li>
+        <li>The decision of the referee / umpire is final and binding.</li>
+        <li>Team sports require a minimum number of registered members to participate.</li>
+        <li>T-shirts / jerseys provided must be worn during the event.</li>
+        <li>Registration is on a first-come, first-served basis. Slots are limited.</li>
+        <li>In case of bad weather, schedule may be adjusted by the organising committee.</li>
+        <li>For queries, contact the Sports Department between 9 AM – 4 PM on working days.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ REGISTER ══════════════ -->
+<div class="page" id="page-register">
+  <div class="page-hero">
+    <h1>REGISTER NOW</h1>
+    <p>Fill details carefully. Maximum 2 sports per student. Roll number must start with <strong>0863</strong>.</p>
+  </div>
+  <div style="max-width:680px;margin:0 auto;padding:clamp(28px,4vw,52px) 20px">
+    <div class="form-card reveal">
+      <h2>Participant Details</h2>
+      <p class="form-note">All fields marked <span class="req">*</span> are required. Each student may register for up to 2 different sports events.</p>
+
+      <div class="reg-progress" id="reg-progress" style="display:none">
+        <span style="font-size:13px;color:var(--text-sec);white-space:nowrap" id="prog-label">0 / 2 sports</span>
+        <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+        <span class="progress-text" id="prog-slots">2 slots left</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="f-name" placeholder="Your full name" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label>Enrolment Number <span class="req">*</span><span class="field-hint">e.g. 0863CS21001</span></label>
+          <input type="text" id="f-enroll" placeholder="0863CS2XXXXX" autocomplete="off"
+            oninput="this.value=this.value.toUpperCase();validateEnrolField()"
+            onblur="checkEnrolment()">
+          <div class="enrol-status" id="enrol-status"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Mobile (WhatsApp) <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input type="tel" id="f-mobile" placeholder="10-digit number" maxlength="10"
+              oninput="this.value=this.value.replace(/\D/g,'');validateMobile()">
+            <span class="field-icon" id="mobile-icon"></span>
+          </div>
+          <div class="field-msg" id="mobile-msg"></div>
+        </div>
+        <div class="form-group">
+          <label>Branch <span class="req">*</span></label>
+          <select id="f-branch">
+            <option value="">Select Branch</option>
+            <option>Computer Science (CS)</option>
+            <option>Information Technology (IT)</option>
+            <option>Electronics & Communication (EC)</option>
+            <option>Electrical Engineering (EE)</option>
+            <option>Mechanical Engineering (ME)</option>
+            <option>Civil Engineering (CE)</option>
+            <option>MBA</option><option>MCA</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Year <span class="req">*</span></label>
+          <select id="f-year">
+            <option value="">Select Year</option>
+            <option>1st Year</option><option>2nd Year</option>
+            <option>3rd Year</option><option>4th Year</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Select Event <span class="req">*</span></label>
+          <select id="f-event">
+            <option value="">Choose a Sport</option>
+            <option>Basketball</option><option>Kho-Kho</option><option>Kabaddi</option>
+            <option>Football</option><option>Cricket</option><option>Table Tennis</option>
+            <option>Badminton</option><option>Carrom</option><option>Chess</option><option>Volleyball</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>T-Shirt / Jersey Size <span class="req">*</span></label>
+        <div class="size-group">
+          <div class="sz" onclick="selectSize('S')">S</div>
+          <div class="sz" onclick="selectSize('M')">M</div>
+          <div class="sz" onclick="selectSize('L')">L</div>
+          <div class="sz" onclick="selectSize('XL')">XL</div>
+          <div class="sz" onclick="selectSize('XXL')">XXL</div>
+          <div class="sz" onclick="selectSize('XXXL')">XXXL</div>
+        </div>
+      </div>
+      <div class="form-msg" id="form-msg"></div>
+      <button class="submit-btn" id="submit-btn" onclick="submitForm()">
+        <span id="submit-label">Submit Registration</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <h1>CONTACT US</h1>
+    <p>Reach out for any queries related to Sports Events 2026.</p>
+  </div>
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-card reveal stagger-1">
+        <span class="c-icon">📧</span>
+        <h4>Email</h4>
+        <p><a href="mailto:work.agastya20@gmail.com">work.agastya20@gmail.com</a></p>
+      </div>
+      <div class="contact-card reveal stagger-2">
+        <span class="c-icon">🕐</span>
+        <h4>Query Hours</h4>
+        <p>Sports Department available for queries<br><strong>Mon – Sat · 9:00 AM – 4:00 PM</strong></p>
+      </div>
+      <div class="contact-card reveal stagger-3">
+        <span class="c-icon">📍</span>
+        <h4>Address</h4>
+        <p>Prestige Institute of Engineering Management & Research<br>Prestige Vihar, Scheme 74, Vijay Nagar<br>Indore – 452010, M.P.</p>
+      </div>
+      <div class="contact-card reveal stagger-4">
+        <span class="c-icon">🏅</span>
+        <h4>Sports Department</h4>
+        <p>For event-related queries, contact the Sports Department during office hours or email us directly.</p>
+      </div>
+    </div>
+    <div class="reveal" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:28px;box-shadow:var(--shadow)">
+      <iframe src="https://www.google.com/maps?q=Prestige+Institute+of+Engineering+Management+Research+Indore&output=embed"
+        width="100%" height="300" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="reveal" style="background:var(--blue-light);border:1px solid #bfdbfe;border-radius:var(--r-lg);padding:clamp(20px,3vw,32px);text-align:center">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--blue);margin-bottom:10px;letter-spacing:1px">READY TO REGISTER?</div>
+      <p style="font-size:14px;color:var(--text-sec);margin-bottom:18px">Don't miss your chance! Up to 2 sports per student.</p>
+      <button class="nav-cta" style="padding:11px 28px;font-size:14px" onclick="showPage('register')">Register Now →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ADMIN LOGIN ══════════════ -->
+<div class="page" id="page-adminLogin">
+  <div class="admin-login-wrap">
+    <div class="admin-login-card">
+      <h2>ADMIN LOGIN</h2>
+      <p class="sub">Enter the admin password to access the registrations dashboard.</p>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="admin-pass" placeholder="Enter password"
+          onkeydown="if(event.key==='Enter')adminLogin()">
+      </div>
+      <div class="form-msg" id="login-msg"></div>
+      <button class="submit-btn" onclick="adminLogin()">
+        <span id="login-label">Login to Dashboard</span>
+      </button>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:18px;text-align:center">Forgot password? Contact Mr. Agastya Sharma at work.agastya20@gmail.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ADMIN DASHBOARD ══════════════ -->
+<div class="page" id="page-admin">
+  <div class="admin-body">
+    <div class="admin-top">
+      <div>
+        <div class="admin-title">ADMIN DASHBOARD</div>
+        <div class="admin-sub">Sports Events 2026 · PIEMR Indore</div>
+      </div>
+      <div class="admin-actions">
+        <button class="btn-outline" onclick="exportCSV()">⬇ Export CSV</button>
+        <button class="btn-outline" onclick="fetchStats();fetchRegistrations()">↻ Refresh</button>
+        <button class="btn-danger" onclick="adminLogout()">Logout</button>
+      </div>
+    </div>
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card"><div class="stat-n">—</div><div class="stat-l">Loading...</div></div>
+    </div>
+    <div class="table-card">
+      <div class="table-top">
+        <h3>All Registrations</h3>
+        <span id="count-badge" style="font-size:13px;color:var(--text-sec)">Loading…</span>
+      </div>
+      <div class="filter-row">
+        <input type="text" id="search-input" placeholder="Search name or roll no…" oninput="fetchRegistrations()">
+        <select id="filter-event" onchange="fetchRegistrations()">
+          <option value="">All Events</option>
+          <option>Basketball</option><option>Kho-Kho</option><option>Kabaddi</option>
+          <option>Football</option><option>Cricket</option><option>Table Tennis</option>
+          <option>Badminton</option><option>Carrom</option><option>Chess</option><option>Volleyball</option>
+        </select>
+        <select id="filter-year" onchange="fetchRegistrations()">
+          <option value="">All Years</option>
+          <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
+        </select>
+      </div>
+      <div class="table-scroll">
+        <table id="reg-table">
+          <thead>
+            <tr><th>#</th><th>Name</th><th>Enrolment</th><th>Mobile</th><th>Branch</th><th>Year</th><th>Event</th><th>Size</th><th>Registered</th><th></th></tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+      <div class="empty-state" id="empty-state" style="display:none">
+        <div class="empty-icon">📋</div>
+        <strong>No registrations found</strong><br>
+        <span style="font-size:13px;margin-top:6px;display:block">Registrations will appear here once students submit the form.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer id="main-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>PIEMR SPORTS 2026</h3>
+        <p>Annual Sports Events 2026, Prestige Institute of Engineering Management and Research, Vijay Nagar, Indore.</p>
+        <p style="margin-top:12px">📧 <a href="mailto:work.agastya20@gmail.com" style="color:#60a5fa;text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.7" onmouseout="this.style.opacity=1">work.agastya20@gmail.com</a></p>
+        <p style="font-size:12px;margin-top:5px">🕐 Sports Dept: 9:00 AM – 4:00 PM</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li onclick="showPage('home')">Home</li>
+          <li onclick="showPage('about')">About</li>
+          <li onclick="showPage('register')">Register</li>
+          <li onclick="showPage('contact')">Contact</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Sports Events</h4>
+        <ul>
+          <li>Basketball · Football</li>
+          <li>Cricket · Volleyball</li>
+          <li>Kabaddi · Kho-Kho</li>
+          <li>Badminton · Table Tennis</li>
+          <li>Chess · Carrom</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Prestige Institute of Engineering Management and Research, Indore. All rights reserved.</p>
+      <p class="footer-credit">
+        Designed &amp; Developed by
+        <span class="credit-name">Agastya Sharma</span>
+        <span class="credit-links">
+          <a href="https://www.linkedin.com/in/agastya20/" target="_blank" rel="noopener" class="credit-link linkedin">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:work.agastya20@gmail.com" class="credit-link mail">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            Email
+          </a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const API = '';
+let selSize = '';
+let enrolCheckTimer = null;
+let currentEnrolData = null;
+
+/* ── PAGE LOADER ── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    startCounters();
+    initReveal();
+  }, 1400);
+});
+
+/* ── COUNTER ANIMATION ── */
+function startCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count);
+    const duration = 1200;
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+/* ── SCROLL REVEAL ── */
+function initReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => observer.observe(el));
+}
+
+/* ── NAVBAR SCROLL ── */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  const btn = document.getElementById('scroll-top');
+  if (window.scrollY > 60) { nav.classList.add('scrolled'); btn.classList.add('visible'); }
+  else { nav.classList.remove('scrolled'); btn.classList.remove('visible'); }
+}, { passive: true });
+
+/* ── NAVIGATION ── */
+function showPage(p) {
+  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('[data-nav]').forEach(x => x.classList.remove('active'));
+  document.getElementById('page-' + p).classList.add('active');
+  const nl = document.querySelector(`[data-nav="${p}"]`);
+  if (nl) nl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (p === 'admin') { fetchStats(); fetchRegistrations(); }
+  setTimeout(initReveal, 50);
+}
+
+function toggleMenu() {
+  const h = document.getElementById('hamburger');
+  const m = document.getElementById('mobile-menu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+/* ── TOAST ── */
+function toast(msg, type = 'info', dur = 3500) {
+  const icons = { success: '✓', error: '✕', info: 'ℹ' };
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.innerHTML = `<span style="font-size:16px">${icons[type]||'ℹ'}</span><span>${msg}</span>`;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(() => { el.classList.add('fade'); setTimeout(() => el.remove(), 300); }, dur);
+}
+
+/* ── SIZE ── */
+function selectSize(s) {
+  selSize = s;
+  document.querySelectorAll('.sz').forEach(b => b.classList.toggle('sel', b.textContent === s));
+}
+
+/* ── MOBILE VALIDATION ── */
+function validateMobile() {
+  const v = document.getElementById('f-mobile').value;
+  const inp = document.getElementById('f-mobile');
+  const msg = document.getElementById('mobile-msg');
+  const icon = document.getElementById('mobile-icon');
+  if (!v.length) { inp.className=''; msg.className='field-msg'; icon.textContent=''; return; }
+  if (v.length < 10) {
+    inp.className='invalid'; msg.className='field-msg show err';
+    msg.textContent=`${10-v.length} more digit(s) needed`; icon.textContent='';
+  } else if (/^\d{10}$/.test(v)) {
+    inp.className='valid'; msg.className='field-msg show ok';
+    msg.textContent='✓ Valid mobile number'; icon.textContent='✓';
+  }
+}
+
+/* ── ENROLMENT VALIDATION ── */
+const ROLL_RE = /^0863[A-Za-z]{2,3}\d{5,6}$/;
+function validateEnrolField() {
+  const v = document.getElementById('f-enroll').value;
+  const inp = document.getElementById('f-enroll');
+  const status = document.getElementById('enrol-status');
+  currentEnrolData = null;
+  if (!v.length) { inp.className=''; status.className='enrol-status'; return; }
+  if (!v.startsWith('0863')) {
+    inp.className='invalid'; status.className='enrol-status show err';
+    status.textContent='✕ Roll number must start with 0863 (PIEMR institute code)';
+    updateProgress(null); return;
+  }
+  if (v.length < 11) { inp.className=''; status.className='enrol-status'; updateProgress(null); return; }
+  if (!ROLL_RE.test(v)) {
+    inp.className='invalid'; status.className='enrol-status show err';
+    status.textContent='✕ Wrong format. Expected: 0863 + branch code (CS/IT/EC..) + 5-6 digits. e.g. 0863CS21001';
+    updateProgress(null); return;
+  }
+  inp.className=''; status.className='enrol-status';
+  clearTimeout(enrolCheckTimer);
+  enrolCheckTimer = setTimeout(checkEnrolment, 600);
+}
+
+async function checkEnrolment() {
+  const v = document.getElementById('f-enroll').value.trim().toUpperCase();
+  if (!ROLL_RE.test(v)) return;
+  const inp = document.getElementById('f-enroll');
+  const status = document.getElementById('enrol-status');
+  status.className='enrol-status show'; status.textContent='Checking...';
+  try {
+    const res = await fetch(API+'/api/check-enrolment', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({enrolment:v})});
+    const json = await res.json();
+    currentEnrolData = json;
+    if (json.valid) {
+      inp.className='valid';
+      if (json.count===0) { status.className='enrol-status show ok'; status.textContent='✓ Valid enrolment. You can register for up to 2 sports.'; }
+      else { status.className='enrol-status show warn'; status.innerHTML=`⚠ Already registered for: <strong>${json.events.join(', ')}</strong>. ${json.remaining} slot(s) remaining.`; }
+      updateProgress(json);
+    } else {
+      inp.className='invalid';
+      if (json.limit_reached) { status.className='enrol-status show err'; status.innerHTML=`🚫 <strong>Limit reached.</strong> Already registered for: <strong>${json.events.join(', ')}</strong>.<br>Maximum 2 sports allowed. Contact the Sports Department.`; }
+      else { status.className='enrol-status show err'; status.textContent='✕ '+json.message; }
+      updateProgress(null);
+    }
+  } catch(e) {
+    status.className='enrol-status show warn';
+    status.textContent='⚠ Could not verify — server may be offline. Validation will still run on submit.';
+    inp.className=''; updateProgress(null);
+  }
+}
+
+function updateProgress(data) {
+  const bar = document.getElementById('reg-progress');
+  if (!data) { bar.style.display='none'; return; }
+  bar.style.display='flex';
+  document.getElementById('prog-label').textContent=`${data.count} / 2 sports`;
+  document.getElementById('prog-fill').style.width=`${(data.count/2)*100}%`;
+  document.getElementById('prog-slots').textContent=data.remaining+' slot(s) left';
+}
+
+/* ── SUBMIT ── */
+async function submitForm() {
+  const name=document.getElementById('f-name').value.trim();
+  const enroll=document.getElementById('f-enroll').value.trim().toUpperCase();
+  const mobile=document.getElementById('f-mobile').value.trim();
+  const branch=document.getElementById('f-branch').value;
+  const year=document.getElementById('f-year').value;
+  const event=document.getElementById('f-event').value;
+  const msg=document.getElementById('form-msg');
+  msg.className='form-msg'; msg.style.display='none';
+  if (!name) { showErr('Please enter your full name.'); document.getElementById('f-name').focus(); return; }
+  if (!enroll) { showErr('Please enter your enrolment number.'); return; }
+  if (!ROLL_RE.test(enroll)) { showErr('Invalid roll number. Must start with 0863 + branch code + digits (e.g. 0863CS21001).'); return; }
+  if (!/^\d{10}$/.test(mobile)) { showErr('Mobile number must be exactly 10 digits.'); document.getElementById('f-mobile').focus(); return; }
+  if (!branch) { showErr('Please select your branch.'); return; }
+  if (!year) { showErr('Please select your year.'); return; }
+  if (!event) { showErr('Please select a sport event.'); return; }
+  if (!selSize) { showErr('Please select your T-shirt / jersey size.'); return; }
+  if (currentEnrolData && currentEnrolData.limit_reached) { showErr(`Registration limit reached. Already registered for: ${currentEnrolData.events.join(', ')}. Contact Sports Department.`); return; }
+  const btn=document.getElementById('submit-btn');
+  const lbl=document.getElementById('submit-label');
+  btn.disabled=true; lbl.innerHTML='<span class="spinner"></span> Submitting…';
+  try {
+    const res=await fetch(API+'/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,enrolment:enroll,mobile,branch,year,event,tshirt_size:selSize})});
+    const json=await res.json();
+    if (json.success) {
+      msg.className='form-msg success';
+      const more=json.can_register_more?`<br><small style="color:#4b7c6a">You can still register for 1 more sport!</small>`:`<br><small style="color:#4b7c6a">You have used all 2 registration slots.</small>`;
+      msg.innerHTML=`<div style="font-size:28px;margin-bottom:10px">🎉</div><strong>Registration Successful!</strong><br>${json.data.name} registered for <strong>${event}</strong>. (${json.registrations_count}/2 sports)${more}`;
+      toast('Registration successful! 🎉','success',4000);
+      clearForm();
+    } else {
+      showErr(json.message);
+      if (json.limit_reached) toast('Registration limit reached for this enrolment.','error');
+    }
+  } catch(e) {
+    showErr('Could not connect to server. Make sure the backend (app.py) is running.');
+    toast('Server connection failed.','error');
+  }
+  btn.disabled=false; lbl.textContent='Submit Registration';
+}
+
+function showErr(m) { const msg=document.getElementById('form-msg'); msg.className='form-msg error'; msg.textContent=m; }
+function clearForm() {
+  ['f-name','f-enroll','f-mobile'].forEach(id=>document.getElementById(id).value='');
+  ['f-branch','f-year','f-event'].forEach(id=>document.getElementById(id).value='');
+  ['f-name','f-enroll','f-mobile'].forEach(id=>document.getElementById(id).className='');
+  selectSize(''); selSize=''; currentEnrolData=null;
+  document.getElementById('enrol-status').className='enrol-status';
+  document.getElementById('mobile-msg').className='field-msg';
+  document.getElementById('mobile-icon').textContent='';
+  document.getElementById('reg-progress').style.display='none';
+}
+
+/* ── ADMIN ── */
+async function adminLogin() {
+  const pass=document.getElementById('admin-pass').value;
+  const msg=document.getElementById('login-msg');
+  const btn=document.getElementById('login-label');
+  msg.className='form-msg'; msg.style.display='none';
+  btn.innerHTML='<span class="spinner"></span> Logging in…';
+  try {
+    const res=await fetch(API+'/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pass})});
+    const json=await res.json();
+    if (json.success) { document.getElementById('admin-pass').value=''; toast('Welcome to Admin Dashboard','success'); showPage('admin'); }
+    else { msg.className='form-msg error'; msg.textContent='Incorrect password. Try again.'; toast('Incorrect password','error'); }
+  } catch(e) { msg.className='form-msg error'; msg.textContent='Cannot connect to server.'; }
+  btn.textContent='Login to Dashboard';
+}
+
+async function adminLogout() {
+  await fetch(API+'/api/admin/logout',{method:'POST'});
+  toast('Logged out successfully','info'); showPage('home');
+}
+
+async function fetchStats() {
+  try {
+    const res=await fetch(API+'/api/admin/stats');
+    const j=await res.json();
+    if (!j.success) return;
+    const maxEv=j.events&&Object.keys(j.events).length?Math.max(...Object.values(j.events)):1;
+    const evBars=Object.entries(j.events||{}).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
+      `<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+        <span style="font-size:12px;color:var(--text-sec);width:96px;flex-shrink:0">${k}</span>
+        <div style="flex:1;height:7px;background:var(--border);border-radius:999px;overflow:hidden"><div class="chart-bar" style="width:${Math.round(v/maxEv*100)}%"></div></div>
+        <span style="font-size:12px;font-weight:700;min-width:18px;text-align:right">${v}</span>
+      </div>`).join('');
+    document.getElementById('stats-grid').innerHTML=`
+      <div class="stat-card"><div class="stat-n">${j.total}</div><div class="stat-l">Total Entries</div></div>
+      <div class="stat-card"><div class="stat-n">${j.unique_students}</div><div class="stat-l">Unique Students</div></div>
+      <div class="stat-card"><div class="stat-n">${j.events_count}</div><div class="stat-l">Events Active</div></div>
+      <div class="stat-card"><div class="stat-n">${j.branches_count}</div><div class="stat-l">Branches</div></div>
+      <div class="stat-card" style="grid-column:span 2"><div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-sec);margin-bottom:14px">Registrations by Sport</div>${evBars||'<span style="font-size:13px;color:var(--text-muted)">No data yet</span>'}</div>`;
+  } catch(e) {}
+}
+
+async function fetchRegistrations() {
+  const search=document.getElementById('search-input').value;
+  const event=document.getElementById('filter-event').value;
+  const year=document.getElementById('filter-year').value;
+  const params=new URLSearchParams({search,event,year});
+  try {
+    const res=await fetch(API+'/api/admin/registrations?'+params);
+    const json=await res.json();
+    if (!json.success) return;
+    document.getElementById('count-badge').textContent=json.total+' registration'+(json.total!==1?'s':'');
+    const tbody=document.getElementById('table-body');
+    if (json.data.length===0) {
+      tbody.innerHTML='';
+      document.getElementById('empty-state').style.display='block';
+      document.getElementById('reg-table').style.display='none';
+      return;
+    }
+    document.getElementById('empty-state').style.display='none';
+    document.getElementById('reg-table').style.display='table';
+    tbody.innerHTML=json.data.map((r,i)=>`
+      <tr style="animation:pageIn .3s ${i*.04}s both">
+        <td style="color:var(--text-muted)">${i+1}</td>
+        <td style="font-weight:600">${r.name}</td>
+        <td style="font-family:monospace;font-size:12px">${r.enrolment}</td>
+        <td>${r.mobile}</td>
+        <td style="font-size:12px;max-width:120px">${r.branch}</td>
+        <td><span class="badge badge-blue">${r.year}</span></td>
+        <td><span class="badge badge-green">${r.event}</span></td>
+        <td style="font-weight:700">${r.tshirt_size}</td>
+        <td style="font-size:11px;color:var(--text-muted);white-space:nowrap">${r.registered_at}</td>
+        <td><button class="del-btn" onclick="deleteEntry(${r.id})">✕ Remove</button></td>
+      </tr>`).join('');
+  } catch(e) {}
+}
+
+async function deleteEntry(id) {
+  if (!confirm('Remove this registration?')) return;
+  await fetch(API+'/api/admin/delete/'+id,{method:'DELETE'});
+  toast('Registration removed','info');
+  fetchStats(); fetchRegistrations();
+}
+
+function exportCSV() { window.location.href=API+'/api/admin/export'; }
+</script>
+</body>
+</html>
