@@ -207,6 +207,27 @@ input.invalid:focus{box-shadow:0 0 0 4px rgba(220,38,38,.1)}
 .enrol-status.warn{background:#fff7ed;border-color:#fed7aa;color:#9a3412}
 .enrol-status.err{background:#fef2f2;border-color:#fecaca;color:#991b1b}
 
+/* ── SPORT CHECKBOXES ── */
+.sport-check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:8px}
+.sport-check-item{position:relative}
+.sport-check-item input[type=checkbox]{position:absolute;opacity:0;width:0;height:0}
+.sport-check-label{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;background:var(--surface);transition:all .2s cubic-bezier(.22,1,.36,1);user-select:none;font-size:13px;font-weight:500;color:var(--text)}
+.sport-check-label:hover{border-color:var(--blue);background:var(--blue-light);color:var(--blue)}
+.sport-check-item input:checked + .sport-check-label{border-color:var(--blue);background:var(--blue);color:#fff;transform:scale(1.02)}
+.sport-check-item input:checked + .sport-check-label .sport-check-icon{transform:scale(1.2)}
+.sport-check-item.disabled .sport-check-label{opacity:.45;cursor:not-allowed;transform:none}
+.sport-check-item.disabled .sport-check-label:hover{border-color:var(--border);background:var(--surface);color:var(--text)}
+.sport-check-icon{font-size:18px;flex-shrink:0;transition:transform .2s}
+.sport-check-box{width:18px;height:18px;border:2px solid rgba(255,255,255,.5);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;transition:all .2s}
+.sport-check-item input:checked + .sport-check-label .sport-check-box{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.8)}
+.sport-check-item input:checked + .sport-check-label .sport-check-box::after{content:'✓';font-size:11px;color:#fff;font-weight:700}
+.sport-counter{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;font-size:13px;margin-bottom:10px}
+.sport-counter-dots{display:flex;gap:6px}
+.sport-counter-dot{width:10px;height:10px;border-radius:50%;background:var(--border);transition:all .3s cubic-bezier(.22,1,.36,1)}
+.sport-counter-dot.filled{background:var(--blue);transform:scale(1.2)}
+.sport-counter-text{color:var(--text-sec);font-weight:500}
+.sport-counter-text span{color:var(--blue);font-weight:700}
+
 /* SIZE SELECTOR */
 .size-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
 .sz{min-width:44px;height:42px;padding:0 10px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;color:var(--text);transition:all .2s cubic-bezier(.22,1,.36,1);font-family:'Barlow Condensed',sans-serif;background:var(--surface);user-select:none;position:relative;overflow:hidden}
@@ -579,15 +600,30 @@ footer{background:#07111f;color:#64748b;padding:clamp(40px,5vw,60px) 20px clamp(
             <option>3rd Year</option><option>4th Year</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>Select Event <span class="req">*</span></label>
-          <select id="f-event">
-            <option value="">Choose a Sport</option>
-            <option>Basketball</option><option>Kho-Kho</option><option>Kabaddi</option>
-            <option>Football</option><option>Cricket</option><option>Table Tennis</option>
-            <option>Badminton</option><option>Carrom</option><option>Chess</option><option>Volleyball</option>
-          </select>
+      </div>
+
+      <div class="form-group">
+        <label>Select Sport(s) <span class="req">*</span><span class="field-hint">Choose 1 or 2 sports</span></label>
+        <div class="sport-counter" id="sport-counter">
+          <div class="sport-counter-dots">
+            <div class="sport-counter-dot" id="dot-1"></div>
+            <div class="sport-counter-dot" id="dot-2"></div>
+          </div>
+          <div class="sport-counter-text"><span id="sport-count-text">0</span> / 2 sports selected</div>
         </div>
+        <div class="sport-check-grid" id="sport-check-grid">
+          <div class="sport-check-item"><input type="checkbox" id="sp-Basketball" value="Basketball" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-Basketball"><span class="sport-check-icon">🏀</span>Basketball<div class="sport-check-box"></div></label></div>
+          <div class="sport-check-item"><input type="checkbox" id="sp-Football" value="Football" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-Football"><span class="sport-check-icon">⚽</span>Football<div class="sport-check-box"></div></label></div>
+          <div class="sport-check-item"><input type="checkbox" id="sp-Volleyball" value="Volleyball" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-Volleyball"><span class="sport-check-icon">🏐</span>Volleyball<div class="sport-check-box"></div></label></div>
+          <div class="sport-check-item"><input type="checkbox" id="sp-Cricket" value="Cricket" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-Cricket"><span class="sport-check-icon">🏏</span>Cricket<div class="sport-check-box"></div></label></div>
+          <div class="sport-check-item"><input type="checkbox" id="sp-Kabaddi" value="Kabaddi" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-Kabaddi"><span class="sport-check-icon">🤼</span>Kabaddi<div class="sport-check-box"></div></label></div>
+          <div class="sport-check-item"><input type="checkbox" id="sp-Kho-Kho" value="Kho-Kho" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-Kho-Kho"><span class="sport-check-icon">🏃</span>Kho-Kho<div class="sport-check-box"></div></label></div>
+          <div class="sport-check-item"><input type="checkbox" id="sp-Badminton" value="Badminton" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-Badminton"><span class="sport-check-icon">🏸</span>Badminton<div class="sport-check-box"></div></label></div>
+          <div class="sport-check-item"><input type="checkbox" id="sp-TableTennis" value="Table Tennis" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-TableTennis"><span class="sport-check-icon">🏓</span>Table Tennis<div class="sport-check-box"></div></label></div>
+          <div class="sport-check-item"><input type="checkbox" id="sp-Chess" value="Chess" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-Chess"><span class="sport-check-icon">♟️</span>Chess<div class="sport-check-box"></div></label></div>
+          <div class="sport-check-item"><input type="checkbox" id="sp-Carrom" value="Carrom" onchange="handleSportCheck()"><label class="sport-check-label" for="sp-Carrom"><span class="sport-check-icon">🎯</span>Carrom<div class="sport-check-box"></div></label></div>
+        </div>
+        <div class="field-msg" id="sport-msg"></div>
       </div>
       <div class="form-group">
         <label>T-Shirt / Jersey Size <span class="req">*</span></label>
@@ -664,7 +700,7 @@ footer{background:#07111f;color:#64748b;padding:clamp(40px,5vw,60px) 20px clamp(
       <button class="submit-btn" onclick="adminLogin()">
         <span id="login-label">Login to Dashboard</span>
       </button>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:18px;text-align:center">Forgot password? Contact Mr. Agastya Sharma at work.agastya20@gmail.com</p>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:18px;text-align:center">Default: <code style="background:var(--bg);padding:2px 8px;border-radius:4px;font-size:11px">sports2026</code></p>
     </div>
   </div>
 </div>
@@ -935,58 +971,140 @@ function updateProgress(data) {
   document.getElementById('prog-slots').textContent=data.remaining+' slot(s) left';
 }
 
-/* ── SUBMIT ── */
+/* ── SPORT CHECKBOX HANDLER ── */
+function handleSportCheck() {
+  const checked = Array.from(document.querySelectorAll('#sport-check-grid input:checked'));
+  const count = checked.length;
+  // Update counter dots
+  document.getElementById('dot-1').classList.toggle('filled', count >= 1);
+  document.getElementById('dot-2').classList.toggle('filled', count >= 2);
+  document.getElementById('sport-count-text').textContent = count;
+  // Disable unchecked if max reached
+  document.querySelectorAll('#sport-check-grid .sport-check-item').forEach(item => {
+    const cb = item.querySelector('input');
+    if (!cb.checked && count >= 2) {
+      item.classList.add('disabled');
+      cb.disabled = true;
+    } else {
+      item.classList.remove('disabled');
+      cb.disabled = false;
+    }
+  });
+  // Show/hide msg
+  const msg = document.getElementById('sport-msg');
+  if (count === 2) {
+    msg.className = 'field-msg show ok';
+    msg.textContent = '✓ 2 sports selected — maximum reached!';
+  } else if (count === 1) {
+    msg.className = 'field-msg show ok';
+    msg.textContent = '✓ 1 sport selected. You can pick 1 more.';
+  } else {
+    msg.className = 'field-msg';
+  }
+}
+
+function getSelectedSports() {
+  return Array.from(document.querySelectorAll('#sport-check-grid input:checked')).map(cb => cb.value);
+}
+
+function clearSportCheckboxes() {
+  document.querySelectorAll('#sport-check-grid input').forEach(cb => {
+    cb.checked = false;
+    cb.disabled = false;
+    cb.closest('.sport-check-item').classList.remove('disabled');
+  });
+  document.getElementById('dot-1').classList.remove('filled');
+  document.getElementById('dot-2').classList.remove('filled');
+  document.getElementById('sport-count-text').textContent = '0';
+  document.getElementById('sport-msg').className = 'field-msg';
+}
+
+/* ── SUBMIT FORM ── */
 async function submitForm() {
-  const name=document.getElementById('f-name').value.trim();
-  const enroll=document.getElementById('f-enroll').value.trim().toUpperCase();
-  const mobile=document.getElementById('f-mobile').value.trim();
-  const branch=document.getElementById('f-branch').value;
-  const year=document.getElementById('f-year').value;
-  const event=document.getElementById('f-event').value;
-  const msg=document.getElementById('form-msg');
-  msg.className='form-msg'; msg.style.display='none';
-  if (!name) { showErr('Please enter your full name.'); document.getElementById('f-name').focus(); return; }
+  const name    = document.getElementById('f-name').value.trim();
+  const enroll  = document.getElementById('f-enroll').value.trim().toUpperCase();
+  const mobile  = document.getElementById('f-mobile').value.trim();
+  const branch  = document.getElementById('f-branch').value;
+  const year    = document.getElementById('f-year').value;
+  const sports  = getSelectedSports();
+  const msg     = document.getElementById('form-msg');
+  msg.className = 'form-msg'; msg.style.display = 'none';
+
+  if (!name)   { showErr('Please enter your full name.'); document.getElementById('f-name').focus(); return; }
   if (!enroll) { showErr('Please enter your enrolment number.'); return; }
   if (!ROLL_RE.test(enroll)) { showErr('Invalid roll number. Must start with 0863 + branch code + digits (e.g. 0863CS21001).'); return; }
   if (!/^\d{10}$/.test(mobile)) { showErr('Mobile number must be exactly 10 digits.'); document.getElementById('f-mobile').focus(); return; }
   if (!branch) { showErr('Please select your branch.'); return; }
-  if (!year) { showErr('Please select your year.'); return; }
-  if (!event) { showErr('Please select a sport event.'); return; }
-  if (!selSize) { showErr('Please select your T-shirt / jersey size.'); return; }
-  if (currentEnrolData && currentEnrolData.limit_reached) { showErr(`Registration limit reached. Already registered for: ${currentEnrolData.events.join(', ')}. Contact Sports Department.`); return; }
-  const btn=document.getElementById('submit-btn');
-  const lbl=document.getElementById('submit-label');
-  btn.disabled=true; lbl.innerHTML='<span class="spinner"></span> Submitting…';
-  try {
-    const res=await fetch(API+'/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,enrolment:enroll,mobile,branch,year,event,tshirt_size:selSize})});
-    const json=await res.json();
-    if (json.success) {
-      msg.className='form-msg success';
-      const more=json.can_register_more?`<br><small style="color:#4b7c6a">You can still register for 1 more sport!</small>`:`<br><small style="color:#4b7c6a">You have used all 2 registration slots.</small>`;
-      msg.innerHTML=`<div style="font-size:28px;margin-bottom:10px">🎉</div><strong>Registration Successful!</strong><br>${json.data.name} registered for <strong>${event}</strong>. (${json.registrations_count}/2 sports)${more}`;
-      toast('Registration successful! 🎉','success',4000);
-      clearForm();
-    } else {
-      showErr(json.message);
-      if (json.limit_reached) toast('Registration limit reached for this enrolment.','error');
-    }
-  } catch(e) {
-    showErr('Could not connect to server. Make sure the backend (app.py) is running.');
-    toast('Server connection failed.','error');
+  if (!year)   { showErr('Please select your year.'); return; }
+  if (sports.length === 0) { showErr('Please select at least 1 sport.'); return; }
+  if (sports.length > 2)   { showErr('You can select a maximum of 2 sports.'); return; }
+  if (!selSize){ showErr('Please select your T-shirt / jersey size.'); return; }
+
+  if (currentEnrolData && currentEnrolData.limit_reached) {
+    showErr(`Registration limit reached. Already registered for: ${currentEnrolData.events.join(', ')}. Contact Sports Department.`);
+    return;
   }
-  btn.disabled=false; lbl.textContent='Submit Registration';
+
+  const btn = document.getElementById('submit-btn');
+  const lbl = document.getElementById('submit-label');
+  btn.disabled = true;
+  lbl.innerHTML = '<span class="spinner"></span> Submitting…';
+
+  // Submit each sport one by one
+  let successCount = 0;
+  let errors = [];
+  let lastData = null;
+
+  for (const sport of sports) {
+    try {
+      const res = await fetch(API + '/api/register', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, enrolment: enroll, mobile, branch, year, event: sport, tshirt_size: selSize})
+      });
+      const json = await res.json();
+      if (json.success) {
+        successCount++;
+        lastData = json;
+      } else {
+        errors.push(`${sport}: ${json.message}`);
+      }
+    } catch(e) {
+      errors.push(`${sport}: Server connection failed`);
+    }
+  }
+
+  if (successCount === sports.length) {
+    msg.className = 'form-msg success';
+    const sportNames = sports.join(' & ');
+    msg.innerHTML = `<div style="font-size:28px;margin-bottom:10px">🎉</div><strong>Registration Successful!</strong><br>${name} registered for <strong>${sportNames}</strong>.<br><small style="color:#4b7c6a">${successCount} sport(s) registered successfully!</small>`;
+    toast(`Registered for ${sportNames}! 🎉`, 'success', 4000);
+    clearForm();
+    clearSportCheckboxes();
+  } else if (successCount > 0) {
+    msg.className = 'form-msg success';
+    msg.innerHTML = `<div style="font-size:28px;margin-bottom:10px">⚠️</div><strong>Partial Success</strong><br>${successCount} sport(s) registered. Issues: ${errors.join(', ')}`;
+    toast(`${successCount} sport(s) registered`, 'info', 4000);
+  } else {
+    showErr(errors.join(' | '));
+    toast('Registration failed', 'error');
+  }
+
+  btn.disabled = false;
+  lbl.textContent = 'Submit Registration';
 }
 
 function showErr(m) { const msg=document.getElementById('form-msg'); msg.className='form-msg error'; msg.textContent=m; }
 function clearForm() {
   ['f-name','f-enroll','f-mobile'].forEach(id=>document.getElementById(id).value='');
-  ['f-branch','f-year','f-event'].forEach(id=>document.getElementById(id).value='');
+  ['f-branch','f-year'].forEach(id=>document.getElementById(id).value='');
   ['f-name','f-enroll','f-mobile'].forEach(id=>document.getElementById(id).className='');
   selectSize(''); selSize=''; currentEnrolData=null;
   document.getElementById('enrol-status').className='enrol-status';
   document.getElementById('mobile-msg').className='field-msg';
   document.getElementById('mobile-icon').textContent='';
   document.getElementById('reg-progress').style.display='none';
+  clearSportCheckboxes();
 }
 
 /* ── ADMIN ── */
